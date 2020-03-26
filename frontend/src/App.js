@@ -27,7 +27,7 @@ class App extends React.Component {
                 }
             });
 
-            var result = await res.json();
+            var result = await result.json();
 
             if (result && result.success) {
               UserStore.loading = false;
@@ -81,6 +81,9 @@ class App extends React.Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
+    pressure: undefined,
+    wind: undefined,
+    deg: undefined,
     error: undefined
   }
   getWeather = async (e) => {
@@ -96,6 +99,9 @@ class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
+        wind: data.wind.speed,
+        deg: data.wind.deg,
+        pressure: data.main.pressure,
         error: ""
       });
     } else {
@@ -105,6 +111,9 @@ class App extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        wind: undefined,
+        deg: undefined,
+        pressure: undefined,
         error: "Please enter the values."
       });
     }
@@ -158,6 +167,9 @@ class App extends React.Component {
                     city={this.state.city}
                     country={this.state.country}
                     description={this.state.description}
+                    wind={this.state.wind}
+                    deg={this.state.deg}
+                    pressure={this.state.pressure}
                     error={this.state.error}
                   />
               </div>
